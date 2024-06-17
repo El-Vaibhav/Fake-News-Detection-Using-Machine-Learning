@@ -78,10 +78,10 @@ The analysis shows that the N-Gram Count, TF-IDF, and Sentiment Analysis feature
 
 # Usage
 Clone the repository:
-git clone https://github.com/EL-Vaibhav/Fake-News-Detection.git
+https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning.git
 
 # Navigate to the project directory:
-cd Fake-News-Detection
+cd Fake-News-Detection-Using-Machine-Learning
 
 # Install the required packages:
 pip install -r requirements.txt
