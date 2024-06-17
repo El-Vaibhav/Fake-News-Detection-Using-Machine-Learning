@@ -39,4 +39,58 @@ Four classifiers were used to train the models and evaluate their performance:
 3) Random Forest (RF)
 4) Naive Bayes (NB)
 5) Each classifier was evaluated using each feature set to determine the accuracy of fake news detection.
+
+# Results 
+
+The performance of each classifier with different feature sets is summarized below:
+
+The testing was made with the last 20 articles of each dataset ( Fake and Real)
+
+Word Count Feature
+
+1) Logistic Regression (LR): 50% Accuracy
+2) Decision Tree (DT): 50% Accuracy
+3) Random Forest (RF): 45% Accuracy
+4) Naive Bayes (NB): 50% Accuracy
+   
+N-Gram Count Feature
+
+1) Logistic Regression (LR): 100% Accuracy
+2) Decision Tree (DT): 100% Accuracy
+3) Random Forest (RF): 100% Accuracy
+4) Naive Bayes (NB): 90% Accuracy
+   
+TF-IDF Feature
+
+1) Logistic Regression (LR): 100% Accuracy
+2) Decision Tree (DT): 100% Accuracy
+3) Random Forest (RF): 100% Accuracy
+4) Naive Bayes (NB): 90% Accuracy
+   
+Sentiment Analysis Feature
+
+1) Logistic Regression (LR): 100% Accuracy
+2) Decision Tree (DT): 100% Accuracy
+3) Random Forest (RF): 100% Accuracy
+
+# Conclusion
+The analysis shows that the N-Gram Count, TF-IDF, and Sentiment Analysis features are highly effective for fake news detection, achieving perfect or near-perfect accuracy. The Word Count feature, however, is less reliable and should not be used for this purpose.
+
+# Usage
+Clone the repository:
+git clone https://github.com/your-username/Fake-News-Detection.git
+
+# Navigate to the project directory:
+cd Fake-News-Detection
+
+# Install the required packages:
+pip install -r requirements.txt
+
+Run the data preprocessing, feature extraction, and model training scripts as needed.
+
+Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+License
+This project is licensed under the MIT License.
  
