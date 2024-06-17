@@ -78,7 +78,7 @@ The analysis shows that the N-Gram Count, TF-IDF, and Sentiment Analysis feature
 
 # Usage
 Clone the repository:
-git clone https://github.com/your-username/Fake-News-Detection.git
+git clone https://github.com/EL-Vaibhav/Fake-News-Detection.git
 
 # Navigate to the project directory:
 cd Fake-News-Detection
@@ -88,9 +88,9 @@ pip install -r requirements.txt
 
 Run the data preprocessing, feature extraction, and model training scripts as needed.
 
-Contributing
+# Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-License
+# License
 This project is licensed under the MIT License.
  
