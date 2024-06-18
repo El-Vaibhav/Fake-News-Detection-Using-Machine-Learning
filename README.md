@@ -2,6 +2,9 @@
 
 This project focuses on the detection of fake news using machine learning algorithms. Four different classifiers (Logistic Regression, Decision Tree, Random Forest, and Naive Bayes) were evaluated across four distinct feature sets: Word Count, N-Gram Count, TF-IDF, and Sentiment Analysis. The goal is to determine the most effective feature set and classifier for fake news detection.
 
+# Dataset
+https://www.kaggle.com/datasets/csmalarkodi/isot-fake-news-dataset
+
 # Table of Contents
 1) Overview
 2) Project Structure
