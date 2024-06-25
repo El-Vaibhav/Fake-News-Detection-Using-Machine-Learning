@@ -61,7 +61,7 @@ def clean_text(text):
     text = re.sub('\w*\d\w*', '', text)
     return text
 
-# Apply cleaning function to 'text' column
+# Apply cleaning function to 'text' column.
 final_data['text'] = final_data['text'].apply(clean_text)
 
 final_manual_testing['text'] = final_manual_testing['text'].apply(clean_text)

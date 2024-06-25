@@ -55,7 +55,7 @@ def wordopt(text):
 # Clean text data
 final_data['text'] = final_data['text'].apply(wordopt)
 
-# Define features and target
+# Define features and target.
 x = final_data['text']
 y = final_data['class']
 
