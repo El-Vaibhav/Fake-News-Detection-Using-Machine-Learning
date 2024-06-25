@@ -22,8 +22,8 @@ fake_news["class"] = 0
 real_news["class"] = 1
 
 # Manual testing datasets (not used in training)
-fake_news_manual_testing = fake_news.tail(100)
-real_news_manual_testing = real_news.tail(100)
+fake_news_manual_testing = fake_news.tail(10)
+real_news_manual_testing = real_news.tail(10)
 
 # Dropping the last 100 rows from the main datasets for training
 real_news = real_news.iloc[:-100]
