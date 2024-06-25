@@ -59,7 +59,7 @@ def clean_text(text):
     text = re.sub('\w*\d\w*', '', text)
     return text
 
-# Apply cleaning function to 'text' column
+# Apply cleaning function to 'text' column.
 final_data['text'] = final_data['text'].apply(clean_text)
 
 # Function to get word count

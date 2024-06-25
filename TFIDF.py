@@ -13,7 +13,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB  # Import Multinomial Naive Bayes
 
-# Step 2: Load Data into two variables: one is fake and one is real
+# Step 2: Load Data into two variables: one is fake and one is real.
 fake_news = pd.read_csv('Fake.csv')
 real_news = pd.read_csv('True.csv')
 
