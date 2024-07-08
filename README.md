@@ -46,9 +46,26 @@ Four classifiers were used to train the models and evaluate their performance:
 
 # N Gram Count
 
-1)Classification Report
+1) Classification Report
 
 ![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/1cbeabe0-4aca-4d65-a6f2-7ef59efccece)
+
+2) Final Output with testing Dataset
+
+![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/71f39af6-10c7-4013-85dd-7df64b2b9020)
+
+# TFIDF 
+
+1) Classification Report
+
+![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/088b1e8a-066d-440c-98e4-6dc824bfb327)
+
+2) Final Output with testing Dataset
+
+![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/9ce980fc-56df-4e39-b317-af894da8aead)
+
+
+
 
 
 
