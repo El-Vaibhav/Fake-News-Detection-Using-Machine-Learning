@@ -4,15 +4,14 @@ This project focuses on the detection of fake news using machine learning algori
 
 # Table of Contents
 1) Overview
-2) Project Structure
-3) Datasets
-4) Feature Extraction
-5) Model Training and Evaluation
-6) Results
-7) Conclusion
-8) Usage
-9) Contributing
-10) License
+2) Datasets
+3) Feature Extraction
+4) Screenshots
+5) Results
+6) Conclusion
+7) Usage
+8) Contributing
+9) License
 
 # Datasets
 The datasets used in this project are:
