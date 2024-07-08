@@ -64,6 +64,18 @@ Four classifiers were used to train the models and evaluate their performance:
 
 ![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/9ce980fc-56df-4e39-b317-af894da8aead)
 
+# Word Count
+
+1) Classification Report
+   
+![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/d75733b3-2250-4b01-a6e3-4ff213d58138)
+
+
+3) Final Output with testing Dataset
+![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/0dc6bcd6-de9a-45e2-a6e2-c6a02876cf7a)
+
+
+
 
 
 
