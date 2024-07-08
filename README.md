@@ -42,6 +42,14 @@ Four classifiers were used to train the models and evaluate their performance:
 4) Naive Bayes (NB)
 5) Each classifier was evaluated using each feature set to determine the accuracy of fake news detection.
 
+# ScreenShots
+
+1) N Gram Count
+
+   Classification Report
+   ![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/b1412639-3a7c-4cdf-9ea1-723c3ddfecf8)
+
+
 # Results 
 
 The performance of each classifier with different feature sets is summarized below:
