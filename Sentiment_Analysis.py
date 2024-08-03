@@ -4,6 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from sklearn.model_selection import train_test_split
 import nltk
 import re
 import string
@@ -60,7 +61,6 @@ x = final_data['text']
 y = final_data['class']
 
 # Split data into training and testing sets
-from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=42)
 
 # Feature Extraction with TF-IDF and Sentiment Analysis
@@ -91,14 +91,26 @@ from sklearn.metrics import accuracy_score, classification_report
 # Logistic Regression
 LR = LogisticRegression(max_iter=1000)
 LR.fit(xv_train, y_train)
+pred_lr = LR.predict(xv_test)
+print("Logistic Regression:")
+print("Accuracy:", LR.score(xv_test, y_test)*100 ,"%")
+print(classification_report(y_test, pred_lr))
 
 # Decision Tree
 DT = DecisionTreeClassifier()
 DT.fit(xv_train, y_train)
+pred_lr = DT.predict(xv_test)
+print("Decision Tree:")
+print("Accuracy:", LR.score(xv_test, y_test)*100 ,"%")
+print(classification_report(y_test, pred_lr))
 
 # Random Forest
 RF = RandomForestClassifier(random_state=0)
 RF.fit(xv_train, y_train)
+pred_lr = RF.predict(xv_test)
+print("Random Forest:")
+print("Accuracy:", LR.score(xv_test, y_test)*100 ,"%")
+print(classification_report(y_test, pred_lr))
 
 # Function to output label based on prediction
 def output_label(n):

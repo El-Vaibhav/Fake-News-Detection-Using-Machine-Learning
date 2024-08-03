@@ -70,7 +70,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
 # Feature Extraction
 # -----------------------------
 
-# TFIDF Feature (Term freq inverse - inverse document freq)
+# TFIDF Feature (Term freq inverse document freq)
 vectorization = TfidfVectorizer()
 xv_train = vectorization.fit_transform(x_train)
 xv_test = vectorization.transform(x_test)
@@ -83,18 +83,16 @@ xv_test = vectorization.transform(x_test)
 LR = LogisticRegression()
 LR.fit(xv_train, y_train)
 pred_lr = LR.predict(xv_test)
-LR.score(xv_test, y_test)
 print("Logistic Regression:")
-print(f" Accuracy: {accuracy_score(y_test, pred_lr)}")
+print("Accuracy:", LR.score(xv_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_lr))
 
 # Decision Tree
 DT = DecisionTreeClassifier()
 DT.fit(xv_train, y_train)
 pred_dt = DT.predict(xv_test)
-DT.score(xv_test, y_test)
 print("Decision Tree:")
-print(f" Accuracy: {accuracy_score(y_test, pred_dt)}")
+print("Accuracy:", DT.score(xv_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_dt))
 
 # Random Forest
@@ -102,9 +100,8 @@ RF = RandomForestClassifier(random_state=0)
 RF.fit(xv_train, y_train)
 RandomForestClassifier(random_state=0)
 pred_rf = RF.predict(xv_test)
-RF.score(xv_test, y_test)
 print("Random Forest")
-print(f" Accuracy: {accuracy_score(y_test, pred_rf)}")
+print("Accuracy:", RF.score(xv_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_rf))
 
 # Naive Bayes
@@ -112,7 +109,7 @@ NB = MultinomialNB()
 NB.fit(xv_train, y_train)
 pred_nb = NB.predict(xv_test)
 print("Naive Bayes (Multinomial):")
-print(f" Accuracy: {accuracy_score(y_test, pred_nb)}")
+print("Accuracy:", NB.score(xv_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_nb))
 
 # ------------------------------------
