@@ -85,27 +85,24 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
 LR = LogisticRegression()
 LR.fit(x_train, y_train)
 pred_lr = LR.predict(x_test)
-LR.score(x_test, y_test)
 print("Logistic Regression:")
-print(f" Accuracy: {accuracy_score(y_test, pred_lr)}")
+print("Accuracy:", LR.score(x_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_lr))
 
 # Decision Tree
 DT = DecisionTreeClassifier()
 DT.fit(x_train, y_train)
 pred_dt = DT.predict(x_test)
-DT.score(x_test, y_test)
 print("Decision Tree:")
-print(f" Accuracy: {accuracy_score(y_test, pred_dt)}")
+print("Accuracy:", DT.score(x_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_dt))
 
 # Random Forest
 RF = RandomForestClassifier(random_state=0)
 RF.fit(x_train, y_train)
 pred_rf = RF.predict(x_test)
-RF.score(x_test, y_test)
 print("Random Forest")
-print(f" Accuracy: {accuracy_score(y_test, pred_rf)}")
+print("Accuracy:", RF.score(x_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_rf))
 
 # Naive Bayes
@@ -113,7 +110,7 @@ NB = MultinomialNB()
 NB.fit(x_train, y_train)
 pred_nb = NB.predict(x_test)
 print("Naive Bayes (Multinomial):")
-print(f" Accuracy: {accuracy_score(y_test, pred_nb)}")
+print("Accuracy:", NB.score(x_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_nb))
 
 # ------------------------------------
