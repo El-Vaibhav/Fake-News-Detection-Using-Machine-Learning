@@ -31,13 +31,12 @@ fake_news = fake_news.iloc[:-100]
 
 # Merge fake and real news datasets along the row axis=0
 combined_data = pd.concat([fake_news, real_news], axis=0)
-
 # Remove unnecessary columns like 'title', 'subject', 'date' and store in final_data
 final_data = combined_data.drop(["title", "subject", "date"], axis=1)
-
 # Randomly shuffle the rows of data
 final_data = final_data.sample(frac=1).reset_index(drop=True)
 
+# doing the above things for the manual testing dataset also
 combined_data_manual_testing = pd.concat([fake_news_manual_testing, real_news_manual_testing], axis=0)
 final_manual_testing = combined_data_manual_testing.drop(["title", "subject", "date"], axis=1)
 final_manual_testing = final_manual_testing.sample(frac=1).reset_index(drop=True)
