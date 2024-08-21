@@ -125,9 +125,11 @@ accuracy. However, Naive Bayes struggled with this feature, achieving only 50% a
 •	Sentiment Analysis Feature: Decision Tree and Random Forest were again top performers with 99.2% accuracy. Logistic Regression achieved 78.8% accuracy, while Naive Bayes remained at 50%.
 Conclusion:
 
-# Best Features: The Word Count and TF-IDF features, in combination with Decision Tree and Random Forest classifiers, provided the best results for fake news detection, with 100% accuracy in multiple tests.
+# Best Features: 
+The Word Count and TF-IDF features, in combination with Decision Tree and Random Forest classifiers, provided the best results for fake news detection, with 100% accuracy in multiple tests.
 
-# Best Classifiers: Decision Tree and Random Forest consistently outperformed other classifiers across different feature sets. Logistic Regression performed well with the N-Gram Count feature but showed lower accuracy with other features. Naive Bayes underperformed across most feature sets, achieving the highest accuracy (61%) only with N-Gram Count and TF-IDF features.
+# Best Classifiers: 
+Decision Tree and Random Forest consistently outperformed other classifiers across different feature sets. Logistic Regression performed well with the N-Gram Count feature but showed lower accuracy with other features. Naive Bayes underperformed across most feature sets, achieving the highest accuracy (61%) only with N-Gram Count and TF-IDF features.
 
 # Conclusion
 Overall, Decision Tree and Random Forest classifiers with Word Count or TF-IDF features appear to be the most effective combination for this fake news detection task.
