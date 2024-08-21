@@ -47,7 +47,10 @@ Four classifiers were used to train the models and evaluate their performance:
 
 1) Classification Report
 
-![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/97830a2f-660c-432a-9d5d-fec761cceedf)
+![image](https://github.com/user-attachments/assets/af441be6-f381-45d0-a7c9-f1b03ce23bdc)
+![image](https://github.com/user-attachments/assets/a64fc1c5-7d46-4306-896c-9b90ef833e57)
+![image](https://github.com/user-attachments/assets/2e66cbec-3a08-4929-84dc-06f85d9f2213)
+
 
 
 2) Final Output with testing Dataset
@@ -58,7 +61,9 @@ Four classifiers were used to train the models and evaluate their performance:
 
 1) Classification Report
 
-![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/20ee71cf-8e45-4839-8766-02cfe9270dc3)
+![image](https://github.com/user-attachments/assets/b894ce77-4674-4434-afb3-5ac8f45556a7)
+![image](https://github.com/user-attachments/assets/d47aaa87-cae5-4895-924b-a72424ddfbbc)
+
 
 
 2) Final Output with testing Dataset
@@ -69,7 +74,10 @@ Four classifiers were used to train the models and evaluate their performance:
 
 1) Classification Report
    
-![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/d75733b3-2250-4b01-a6e3-4ff213d58138)
+![image](https://github.com/user-attachments/assets/e70d413d-c40a-4a22-9efe-729c4dd438ca)
+![image](https://github.com/user-attachments/assets/953cb370-68d4-450f-b180-c8d78031e9f1)
+![image](https://github.com/user-attachments/assets/f5562c86-2e0c-4606-a4b1-baf656e2f277)
+
 
 
 3) Final Output with testing Dataset
@@ -80,7 +88,9 @@ Four classifiers were used to train the models and evaluate their performance:
 
 1) Classification Report
 
-![image](https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning/assets/135622906/36adfa5d-c38b-43ac-94f4-2e1ff5965cbe)
+![image](https://github.com/user-attachments/assets/fb0ccd24-98d0-4148-a7da-ad6c71b4bef3)
+![Uploading image.png…]()
+
 
 2) Final Output with testing Dataset
 
