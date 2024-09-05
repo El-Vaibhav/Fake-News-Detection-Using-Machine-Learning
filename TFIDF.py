@@ -8,6 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB 
+import pickle
 
 # Step 2: Load Data into two variables: one is fake and one is real.
 fake_news = pd.read_csv('Fake.csv')
@@ -107,6 +108,23 @@ pred_nb = NB.predict(xv_test)
 print("Naive Bayes (Multinomial):")
 print("Accuracy:", NB.score(xv_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_nb))
+
+# Save the trained models
+with open('logistic_regression_model.pkl', 'wb') as file:
+    pickle.dump(LR, file)
+
+with open('decision_tree_model.pkl', 'wb') as file:
+    pickle.dump(DT, file)
+
+with open('random_forest_model.pkl', 'wb') as file:
+    pickle.dump(RF, file)
+
+with open('naive_bayes_model.pkl', 'wb') as file:
+    pickle.dump(NB, file)
+
+# Save the vectorizer
+with open('vectorizer.pkl', 'wb') as file:
+    pickle.dump(vectorization, file)
 
 # ------------------------------------
 # TESTING PHASE
