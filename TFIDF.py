@@ -11,8 +11,8 @@ from sklearn.naive_bayes import MultinomialNB
 import pickle
 
 # Step 2: Load Data into two variables: one is fake and one is real.
-fake_news = pd.read_csv('Fake.csv')
-real_news = pd.read_csv('True.csv')
+fake_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\Fake.csv')
+real_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\True.csv')
 
 # Adding a 'class' column: fake_news -> 0, real_news -> 1
 fake_news["class"] = 0
@@ -72,6 +72,7 @@ vectorization = TfidfVectorizer()
 xv_train = vectorization.fit_transform(x_train)
 xv_test = vectorization.transform(x_test)
 
+print(xv_train)
 # -----------------------------
 # Classifier Training the dataset
 # ----------------------

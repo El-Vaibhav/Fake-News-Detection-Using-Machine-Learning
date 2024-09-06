@@ -10,8 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB  
 
 # Step 2: Load Data into two variables: one is fake and one is real
-fake_news = pd.read_csv('Fake.csv')
-real_news = pd.read_csv('True.csv')
+fake_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\Fake.csv')
+real_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\True.csv')
 
 # Adding a 'class' column: fake_news -> 0, real_news -> 1
 fake_news["class"] = 0
@@ -71,6 +71,7 @@ x_counts, vectorizer = get_ngram_counts(final_data['text'])
 x = x_counts
 y = final_data['class']
 
+print(x)
 # Splitting the dataset into training and testing (70% train, 30% test)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
 
