@@ -11,8 +11,8 @@ from sklearn.preprocessing import MinMaxScaler
 from textblob import TextBlob 
 
 # Step 2: Load Data into two variables: one is fake and one is real
-fake_news = pd.read_csv('Fake.csv')
-real_news = pd.read_csv('True.csv')
+fake_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\Fake.csv')
+real_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\True.csv')
 
 # Adding a 'class' column: fake_news -> 0, real_news -> 1
 fake_news["class"] = 0
@@ -75,6 +75,7 @@ y = final_data['class']
 # training the model on 80% of dataset
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
+print(x_train)
 # ----------------------------------------
 # Classifier Training the dataset
 # ----------------------
