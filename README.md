@@ -100,7 +100,7 @@ Four classifiers were used to train the models and evaluate their performance:
 # Results 
 
 # Objective:
-The primary aim of this project was to evaluate different feature extraction techniques and classifiers for the task of fake news detection. The goal was to determine which combination of feature and classifier works best in terms of accuracy and performance on this specific task.
+The main objective of the work was to compare different feature extraction methods and various classifiers for fake news detection. The motive was that among these, which feature-classifier combination would work best in terms of accuracy/performance for this particular task..
 
 # Feature Extraction Techniques:
 1.	Word Count: The number of words in each news article was used as a feature.
@@ -126,13 +126,17 @@ accuracy. However, Naive Bayes struggled with this feature, achieving only 50% a
 Conclusion:
 
 # Best Features: 
-The Word Count and TF-IDF features, in combination with Decision Tree and Random Forest classifiers, provided the best results for fake news detection, with 100% accuracy in multiple tests.
+Word Count and TF-IDF worked very well with the Decision Tree and Random Forest Classifiers in fake news detection, returning 100% accuracy multiple times on the two mentioned features.
 
 # Best Classifiers: 
-Decision Tree and Random Forest consistently outperformed other classifiers across different feature sets. Logistic Regression performed well with the N-Gram Count feature but showed lower accuracy with other features. Naive Bayes underperformed across most feature sets, achieving the highest accuracy (61%) only with N-Gram Count and TF-IDF features.
+The best performance among all the classifiers for different features was that of Decision Tree and Random Forest.
 
+Logistic Regression performed really very well with the N-Gram Count feature, but it had pretty low performance with the rest of the features.
+
+In most of the feature sets, Naive Bayes underperformed, having achieved highest accuracy 61% achieved with N-Gram Count and TF-IDF features.
+.
 # Conclusion
-Overall, Decision Tree and Random Forest classifiers with Word Count or TF-IDF features appear to be the most effective combination for this fake news detection task.
+For fake news detection, the best general combination appears to be either a Decision Tree or Random Forest classifier combined with Word Count or TF-IDF features
 
 # Usage
 Clone the repository:
