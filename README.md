@@ -138,6 +138,13 @@ In most of the feature sets, Naive Bayes underperformed, having achieved highest
 # Conclusion
 For fake news detection, the best general combination appears to be either a Decision Tree or Random Forest classifier combined with Word Count or TF-IDF features
 
+# Future Work
+I got 100% accuracy when i took all of the above features as input to the model but the time taken and computation power uesd was quiet large .
+![WhatsApp Image 2024-09-07 at 10 52 10_c9154264](https://github.com/user-attachments/assets/69a5979a-2d02-4581-906a-a66c04b5b59d)
+
+As we saw we got 100% accuracy with all combined features, so in future we can use combinations of features as a input to the model and test on more articles while also keeping the CPU, Memory Usage in mind.
+
+
 # Usage
 Clone the repository:
 https://github.com/El-Vaibhav/Fake-News-Detection-Using-Machine-Learning.git
