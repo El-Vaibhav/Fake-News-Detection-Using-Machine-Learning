@@ -3,14 +3,17 @@ import string
 import re
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import MultinomialNB 
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from scipy.sparse import hstack
+from textblob import TextBlob
 import pickle
 
-# Step 2: Load Data into two variables: one is fake and one is real.
+# Load Data into two variables: one is fake and one is real.
 fake_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\Fake.csv')
 real_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\True.csv')
 
@@ -33,7 +36,7 @@ final_data = combined_data.drop(["title", "subject", "date"], axis=1)
 # Randomly shuffle the rows of data
 final_data = final_data.sample(frac=1).reset_index(drop=True)
 
-# doing the above things for the manual testing dataset also
+# Doing the same for the manual testing dataset
 combined_data_manual_testing = pd.concat([fake_news_manual_testing, real_news_manual_testing], axis=0)
 final_manual_testing = combined_data_manual_testing.drop(["title", "subject", "date"], axis=1)
 final_manual_testing = final_manual_testing.sample(frac=1).reset_index(drop=True)
@@ -53,80 +56,77 @@ def preprocess(text):
     text = re.sub('\w*\d\w*', '', text)
     return text
 
-# Apply wordopt function to clean 'text' column
+# Apply preprocess function to clean 'text' column
 final_data['text'] = final_data['text'].apply(preprocess)
 
-# x is independent var and y is dependent
-x = final_data['text']
+def get_sentiment(text):
+    return TextBlob(text).sentiment.polarity
+
+# Apply sentiment analysis to 'text' column
+final_data['sentiment_score'] = final_data['text'].apply(get_sentiment)
+
+# Calculate word count
+final_data['word_count'] = final_data['text'].apply(lambda x: len(x.split()))
+
+# Normalize sentiment score and word count
+scaler_sentiment = MinMaxScaler()
+final_data['sentiment_score_normalized'] = scaler_sentiment.fit_transform(final_data[['sentiment_score']])
+
+scaler_word_count = StandardScaler()
+final_data['word_count_normalized'] = scaler_word_count.fit_transform(final_data[['word_count']])
+
+# Define features and target variable
+x = final_data[['text', 'sentiment_score_normalized', 'word_count_normalized']]
 y = final_data['class']
 
-# training the model on 80% of dataset
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+# Feature Extraction
+# TF-IDF Feature (Term freq inverse document freq) with n-grams
+tfidf_vectorizer = TfidfVectorizer(ngram_range=(1, 2))
+xv = tfidf_vectorizer.fit_transform(x['text'])
+
+# N-gram Count Feature
+ngram_vectorizer = CountVectorizer(ngram_range=(1, 2))
+ngram_counts = ngram_vectorizer.fit_transform(x['text'])
+
+# Combine TF-IDF, n-gram counts, sentiment score, and word count
+additional_features = x[['sentiment_score_normalized', 'word_count_normalized']].values
+combined_features = hstack([xv, ngram_counts, additional_features])
+
+# Split the data into training and testing sets
+x_train, x_test, y_train, y_test = train_test_split(combined_features, y, test_size=0.2)
 
 # ----------------------------------------
-# Feature Extraction
-# -----------------------------
-
-# TFIDF Feature (Term freq inverse document freq)
-vectorization = TfidfVectorizer()
-xv_train = vectorization.fit_transform(x_train)
-xv_test = vectorization.transform(x_test)
-
-# print(xv_train)
-# -----------------------------
 # Classifier Training the dataset
 # ----------------------
 
 # Logistic Regression
 LR = LogisticRegression()
-LR.fit(xv_train, y_train)
-pred_lr = LR.predict(xv_test)
+LR.fit(x_train, y_train)
+pred_lr = LR.predict(x_test)
 print("Logistic Regression:")
-print("Accuracy:", LR.score(xv_test, y_test)*100 ,"%")
+print("Accuracy:", LR.score(x_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_lr))
 
 # Decision Tree
 DT = DecisionTreeClassifier()
-DT.fit(xv_train, y_train)
-pred_dt = DT.predict(xv_test)
+DT.fit(x_train, y_train)
+pred_dt = DT.predict(x_test)
 print("Decision Tree:")
-print("Accuracy:", DT.score(xv_test, y_test)*100 ,"%")
+print("Accuracy:", DT.score(x_test, y_test)*100 ,"%")
 print(classification_report(y_test, pred_dt))
-
-# Random Forest
-RF = RandomForestClassifier(random_state=0)
-RF.fit(xv_train, y_train)
-RandomForestClassifier(random_state=0)
-pred_rf = RF.predict(xv_test)
-print("Random Forest")
-print("Accuracy:", RF.score(xv_test, y_test)*100 ,"%")
-print(classification_report(y_test, pred_rf))
-
-# Naive Bayes
-NB = MultinomialNB()
-NB.fit(xv_train, y_train)
-pred_nb = NB.predict(xv_test)
-print("Naive Bayes (Multinomial):")
-print("Accuracy:", NB.score(xv_test, y_test)*100 ,"%")
-print(classification_report(y_test, pred_nb))
 
 # ------------------------------------
 # TESTING PHASE
 # ----------------------------------------
 
-def output_label(n,true_label):
-    if n == true_label:
-        return "Fake News"
-    else:
-        return "Not A Fake News"
+def output_label(n, true_label):
+    return "Fake News" if n == true_label else "Not Fake News"
 
 def test_all_manual_testing(data):
 
     correct_predictions = {
         'LR': 0,
         'DT': 0,
-        'RF': 0,
-        'NB': 0
     }
 
     results = []
@@ -136,35 +136,36 @@ def test_all_manual_testing(data):
         testing_news = {"text": [news]}
         new_def_test = pd.DataFrame(testing_news)
         new_def_test['text'] = new_def_test["text"].apply(preprocess)
-        new_x_test = new_def_test["text"]
-        new_xv_test = vectorization.transform(new_x_test)
         
-        pred_LR = LR.predict(new_xv_test)
-        pred_DT = DT.predict(new_xv_test)
-        pred_RF = RF.predict(new_xv_test)
-        pred_NB = NB.predict(new_xv_test)
-
-
+        # Process new data
+        new_def_test['sentiment_score'] = new_def_test['text'].apply(get_sentiment)
+        new_def_test['word_count'] = new_def_test['text'].apply(lambda x: len(x.split()))
+        new_def_test['sentiment_score_normalized'] = scaler_sentiment.transform(new_def_test[['sentiment_score']])
+        new_def_test['word_count_normalized'] = scaler_word_count.transform(new_def_test[['word_count']])
+        
+        new_x_text = tfidf_vectorizer.transform(new_def_test['text'])
+        new_ngram_counts = ngram_vectorizer.transform(new_def_test['text'])
+        new_additional_features = new_def_test[['sentiment_score_normalized', 'word_count_normalized']].values
+        new_combined_features = hstack([new_x_text, new_ngram_counts, new_additional_features])
+        
+        pred_LR = LR.predict(new_combined_features)
+        pred_DT = DT.predict(new_combined_features)
+        
         if pred_LR == true_label:
             correct_predictions['LR'] += 1
         if pred_DT == true_label:
             correct_predictions['DT'] += 1
-        if pred_RF == true_label:
-            correct_predictions['RF'] += 1
-        if pred_NB == true_label:
-            correct_predictions['NB'] += 1
+        
         
         results.append({
             'News': news,
             'True Label': "Fake News" if true_label == 0 else "Not Fake News",
             'LR Prediction': output_label(pred_LR, true_label),
             'DT Prediction': output_label(pred_DT, true_label),
-            'RF Prediction': output_label(pred_RF, true_label),
-            'NB Prediction': output_label(pred_NB, true_label)
+            
         })
     
     return pd.DataFrame(results), correct_predictions
-
 
 # Run the test on all manual testing data
 results_df, correct_predictions = test_all_manual_testing(final_manual_testing)
@@ -174,4 +175,4 @@ print(results_df)
 print("Correct Predictions:", correct_predictions)
 
 # Optionally, save the results to a CSV file
-results_df.to_csv('manual_testing_results_TFIDF.csv', index=False)
+results_df.to_csv('manual_testing_results_TFIDF_Ngram.csv', index=False)
