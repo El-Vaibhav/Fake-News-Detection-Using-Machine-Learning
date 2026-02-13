@@ -14,8 +14,8 @@ from textblob import TextBlob
 import pickle
 
 # Load Data into two variables: one is fake and one is real.
-fake_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\Fake.csv')
-real_news = pd.read_csv('Fake-News-Detection-Using-Machine-Learning\\True.csv')
+fake_news = pd.read_csv(r'C:\Users\HP\OneDrive\Desktop\Fake_News_Detection\Fake-News-Detection-Using-Machine-Learning\Fake.csv')
+real_news = pd.read_csv(r'C:\Users\HP\OneDrive\Desktop\Fake_News_Detection\Fake-News-Detection-Using-Machine-Learning\True.csv')
 
 # Adding a 'class' column: fake_news -> 0, real_news -> 1
 fake_news["class"] = 0
