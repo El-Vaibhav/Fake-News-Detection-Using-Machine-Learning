@@ -20,7 +20,7 @@ def preprocess(text):
 # -----------------------
 # Load Model
 # -----------------------
-model_data = joblib.load("improved_fake_news_model_2.pkl")
+model_data = joblib.load("improved_fake_news_model.pkl")
 
 model = model_data["model"]
 tfidf = model_data["tfidf"]
