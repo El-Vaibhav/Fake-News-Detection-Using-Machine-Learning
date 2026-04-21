@@ -21,9 +21,9 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 
 stop_words = set(stopwords.words("english"))
 
-# ====================================================
+# ==================================================
 # 1. LOAD DATA
-# ====================================================
+# ==================================================
 
 ai_df = pd.read_csv("ai_generated_news_20k.csv")
 real_df = pd.read_csv("C:\\Users\\HP\\OneDrive\\Desktop\\Fake_News_Detection\\Fake-News-Detection-Using-Machine-Learning\\True.csv")
